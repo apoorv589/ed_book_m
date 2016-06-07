@@ -133,7 +133,8 @@ class Edc_allotment_model extends CI_Model
             FROM edc_guest_details)
 	     AND room_id = "'.$room_id.'" AND ebd.app_num IN
 	
-	(SELECT DISTINCT erd.app_num FROM edc_registration_details as erd WHERE (pce_status!="Cancelled" OR pce_status IS NULL) AND (dsw_status!="Cancel" OR dsw_status IS NULL)  AND (hod_status!="Cancel"  OR hod_status IS NULL) AND (pce_status !="Cancel" OR pce_status IS NULL) AND (pce_status !="Rejected" OR pce_status IS NULL) )
+	(SELECT DISTINCT erd.app_num FROM edc_registration_details as erd WHERE (pce_status!="Cancelled" OR pce_status IS NULL) AND (dsw_status!="Cancel" OR dsw_status IS NULL)  AND (hod_status!="Cancel"  OR hod_status IS NULL) AND (pce_status !="Cancel" OR pce_status IS NULL) AND (pce_status !="Rejected" OR pce_status IS NULL) AND check_out > CURRENT_TIMESTAMP)
+		
        
         ');
 

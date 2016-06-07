@@ -123,7 +123,8 @@ class Edc_allotment_model extends CI_Model
             return $query->row_array()['app_num'];
         else return '';
     }
-
+//Select only those applications which require the room in the future and have not checked in yet . 
+//Along with the constraint that application does not get cancelled .
  function get_future_room_bookings($room_id) {
         $query = $this->db->query('
         SELECT DISTINCT app_num
